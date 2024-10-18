@@ -1,9 +1,9 @@
 // Import necessary dependencies
 import React, { useState, useEffect } from "react";
 import axios from "axios"; // Used to make HTTP requests
-import SeatGrid from "./components/SeatGrid"; // Component to display seats in a grid
-import BookingForm from "./components/BookingForm"; // Component for seat booking form
-import Loading from "./components/Loading"; // Component to display while data is being fetched
+import SeatGrid from "./Components/SeatGrid"; // Component to display seats in a grid
+import BookingForm from "./Components/BookingForm"; // Component for seat booking form
+import Loading from "./Components/Loading"; // Component to display while data is being fetched
 function App() {
   // State variables
   const URL = import.meta.env.VITE_REACT_API_URL;
