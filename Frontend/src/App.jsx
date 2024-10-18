@@ -4,9 +4,9 @@ import axios from "axios"; // Used to make HTTP requests
 import SeatGrid from "./components/SeatGrid"; // Component to display seats in a grid
 import BookingForm from "./components/BookingForm"; // Component for seat booking form
 import Loading from "./components/Loading"; // Component to display while data is being fetched
-
 function App() {
   // State variables
+  const URL = import.meta.env.VITE_REACT_API_URL;
   const [seats, setSeats] = useState([]); // Holds the seats data
   const [numberOfSeats, setNumberOfSeats] = useState(1); // Number of seats to book, default is 1
   const [bookedSeats, setBookedSeats] = useState([]); // Array of seats that have been successfully booked
@@ -20,7 +20,7 @@ function App() {
   // Function to fetch seat data from the backend API
   const fetchSeats = async () => {
     setLoading(true); // Set loading to true before starting data fetch
-    const response = await axios.get("http://localhost:5000/seats"); // Make a GET request to fetch seat data
+    const response = await axios.get(URL + "/seats"); // Make a GET request to fetch seat data
     setSeats(response.data); // Update the seats state with fetched data
     setLoading(false); // Set loading to false once data has been fetched
   };
@@ -29,7 +29,7 @@ function App() {
   const handleBooking = async () => {
     try {
       // Make a POST request to book the requested number of seats
-      const response = await axios.post("http://localhost:5000/book", {
+      const response = await axios.post(URL + "/book", {
         numberOfSeats, // Pass number of seats to book in request body
       });
       setBookedSeats(response.data.bookedSeats); // Update state with successfully booked seats

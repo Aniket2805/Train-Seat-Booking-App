@@ -1,7 +1,6 @@
 // components/Seat.js
 import React from "react"; // Importing React
 import { MdEventSeat } from "react-icons/md"; // Importing seat icon
-import { Tooltip } from "react-tooltip"; // Importing Tooltip component for displaying seat information
 
 // Seat component takes a 'seat' object as a prop
 const Seat = ({ seat }) => {
