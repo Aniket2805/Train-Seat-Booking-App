@@ -1,6 +1,6 @@
 const express = require("express");
-const connectDB = require("./config/db");
-const seatRoutes = require("./routes/seatRoute");
+const connectDB = require("../config/db");
+const seatRoutes = require("../routes/seatRoute");
 const cors = require("cors");
 
 const app = express();
@@ -17,7 +17,7 @@ app.use(cors());
 app.use("/", seatRoutes);
 
 // Initialize seats when the server starts
-const { initializeSeats } = require("./controllers/seatController");
+const { initializeSeats } = require("../controllers/seatController");
 initializeSeats();
 
 // Start the server
