@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input:focus {
+    outline: none;
+}
+.available {
+    background-color: #a8ffa8;
+}
+.app {
+    max-width: 600px;
+    margin: 0 auto;
+}
+.booked {
+    background-color: #ff7272;
+}
+
+.booking-form {
+    margin-bottom: 20px;
+}
