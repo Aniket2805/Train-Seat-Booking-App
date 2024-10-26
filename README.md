@@ -1,6 +1,3 @@
-Here’s the complete README code in one block for your Train Seat Booking application:
-
-```markdown
 # Train Seat Booking App
 
 This is a Train Seat Booking application built with React for the frontend and Node.js with Express and MongoDB for the backend. The app allows users to view available seats, book seats, and manage seat bookings efficiently.
