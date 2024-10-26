@@ -64,7 +64,7 @@ function App() {
             </div>
           )}
           {/* Seat grid to display all available and booked seats */}
-          <SeatGrid seats={seats} />{" "}
+          <SeatGrid seats={seats} />
           {/* Pass seats data to SeatGrid component */}
         </div>
       )}
