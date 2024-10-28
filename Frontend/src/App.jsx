@@ -4,6 +4,7 @@ import axios from "axios"; // Used to make HTTP requests
 import SeatGrid from "./Components/SeatGrid"; // Component to display seats in a grid
 import BookingForm from "./Components/BookingForm"; // Component for seat booking form
 import Loading from "./Components/Loading"; // Component to display while data is being fetched
+import {toast} from "react-toastify";
 function App() {
   // State variables
   const URL = import.meta.env.VITE_REACT_API_URL;
@@ -24,14 +25,19 @@ function App() {
   const handleBooking = async () => {
     try {
       // Make a POST request to book the requested number of seats
+      if (numberOfSeats < 1) {
+        toast.error("Please enter a valid number of seats to book!");
+        return;
+      }
       const response = await axios.post(URL + "/book", {
         numberOfSeats, // Pass number of seats to book in request body
       });
       setBookedSeats(response.data.bookedSeats); // Update state with successfully booked seats
+      toast.success("Seats have been successfully booked! 🎉🎉"); // Display success message
       fetchSeats(); // Re-fetch the seat data to reflect the updated booking status
     } catch (error) {
       // Display error message in case booking fails
-      alert(error.response.data.message);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -40,9 +46,9 @@ function App() {
     try {
       await axios.post(URL + "/reset");
       fetchSeats();
-      alert("Seats have been reset to available.");
+      toast.success("Seats have been successfully reset! 🎉🎉");
     } catch (error) {
-      console.error("Failed to reset seats:", error);
+      toast.error(error.response.data.message);
     }
   };
 
@@ -50,7 +56,7 @@ function App() {
   useEffect(() => {
     fetchSeats(); // Fetch seat data when component mounts
   }, []);
-  
+
   // Render loading spinner if seats data is being fetched
   return (
     <div className="min-h-screen flex items-center justify-center px-2 sm:px-10 py-10">

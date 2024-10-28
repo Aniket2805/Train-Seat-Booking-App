@@ -23,6 +23,7 @@ const BookingForm = ({
         {/* Input field for number of seats */}
         <input
           type="number"
+          required
           value={numberOfSeats} // Value of the input field is the numberOfSeats state
           className="w-[140px] border-2 border-blue-900 rounded-md px-2 py-1 text-center mr-2"
           onChange={(e) => setNumberOfSeats(e.target.value)} // Updates numberOfSeats state on change
@@ -30,6 +31,7 @@ const BookingForm = ({
 
         {/* Button for submitting the seat booking request */}
         <button
+          type="submit"
           onClick={handleBooking} // Triggers the booking function on click
           className="border-2 px-5 sm:px-8 py-1 rounded-xl transition duration-300 border-blue-900 font-semibold text-white bg-blue-900 shadow-md hover:shadow-lg shadow-blue-800 hover:shadow-blue-800"
         >
