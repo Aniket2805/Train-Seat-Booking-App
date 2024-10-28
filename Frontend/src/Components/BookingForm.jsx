@@ -6,8 +6,8 @@ const BookingForm = ({
   setNumberOfSeats,
   handleBooking,
   handleResetSeats,
+  numberOfSeats,
 }) => {
-
   return (
     // Form container styled with flexbox, centering the content vertically and horizontally
     <div className="booking-form flex flex-col items-center">
@@ -23,7 +23,7 @@ const BookingForm = ({
         {/* Input field for number of seats */}
         <input
           type="number"
-          placeholder="No. of Seats"
+          value={numberOfSeats} // Value of the input field is the numberOfSeats state
           className="w-[140px] border-2 border-blue-900 rounded-md px-2 py-1 text-center mr-2"
           onChange={(e) => setNumberOfSeats(e.target.value)} // Updates numberOfSeats state on change
         />
