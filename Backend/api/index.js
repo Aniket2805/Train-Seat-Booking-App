@@ -13,6 +13,14 @@ connectDB();
 app.get("/", (req, res) => {
   return res.json("Hello World!");
 });
+
+// CORS options to allow requests from frontend running on port 5500
+const corsOptions = {
+  origin: "https://trainseatbookingapp.vercel.app/", // Allow only requests from this origin
+  methods: "GET,POST", // Allow only these methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allow only these headers
+};
+
 // Middleware
 app.use(express.json());
 app.use(cors());
