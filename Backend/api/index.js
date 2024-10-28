@@ -16,7 +16,7 @@ app.get("/", (req, res) => {
 
 // CORS options to allow requests from frontend running on port 5500
 const corsOptions = {
-  origin: "https://trainseatbookingapp.vercel.app/", // Allow only requests from this origin
+  origin: process.env.ORIGIN, // Allow only requests from this origin
   methods: "GET,POST", // Allow only these methods
   allowedHeaders: ["Content-Type", "Authorization"], // Allow only these headers
 };
