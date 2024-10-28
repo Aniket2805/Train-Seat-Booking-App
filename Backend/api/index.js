@@ -32,9 +32,5 @@ app.use(cors(corsOptions));
 // Routes
 app.use("/", seatRoutes);
 
-// Initialize seats when the server starts
-const { initializeSeats } = require("../controllers/seatController");
-initializeSeats();
-
 // Start the server
 app.listen(port, () => console.log(`Server running on port ${port}`));

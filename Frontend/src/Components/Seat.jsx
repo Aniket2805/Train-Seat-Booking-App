@@ -17,7 +17,7 @@ const Seat = ({ seat }) => {
         (seat.isBooked ? "booked" : "available")
       }
       className={`seat flex flex-col justify-center cursor-pointer items-center border-2 sm:text-xl rounded-md w-10 h-10 sm:w-12 sm:h-12 ${
-        seat.isBooked ? "bg-red-500" : "border-green-700" // Dynamic class based on seat availability
+        seat.isBooked ? "bg-red-600" : "border-green-700" // Dynamic class based on seat availability
       }`}
     >
       {/* Rendering seat icon with dynamic color */}

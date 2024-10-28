@@ -1,9 +1,13 @@
 // components/BookingForm.js
 import React from "react"; // Importing React
 import { FaTrainSubway } from "react-icons/fa6"; // Importing a subway train icon
-
 // The BookingForm component is responsible for rendering the form used to book seats
-const BookingForm = ({ numberOfSeats, setNumberOfSeats, handleBooking }) => {
+const BookingForm = ({
+  setNumberOfSeats,
+  handleBooking,
+  handleResetSeats,
+}) => {
+
   return (
     // Form container styled with flexbox, centering the content vertically and horizontally
     <div className="booking-form flex flex-col items-center">
@@ -19,17 +23,26 @@ const BookingForm = ({ numberOfSeats, setNumberOfSeats, handleBooking }) => {
         {/* Input field for number of seats */}
         <input
           type="number"
-          value={numberOfSeats} // Controlled input with numberOfSeats as its value
-          className="w-12 sm:w-16 border-2 border-blue-900 rounded-md px-2 py-1 text-center mr-2"
+          placeholder="No. of Seats"
+          className="w-[140px] border-2 border-blue-900 rounded-md px-2 py-1 text-center mr-2"
           onChange={(e) => setNumberOfSeats(e.target.value)} // Updates numberOfSeats state on change
         />
 
         {/* Button for submitting the seat booking request */}
         <button
           onClick={handleBooking} // Triggers the booking function on click
-          className="border-4 text-blue-900 px-5 sm:px-8 py-1 rounded-2xl transition duration-300 border-blue-900 font-semibold hover:text-white hover:bg-blue-900"
+          className="border-2 px-5 sm:px-8 py-1 rounded-xl transition duration-300 border-blue-900 font-semibold text-white bg-blue-900 shadow-md hover:shadow-lg shadow-blue-800 hover:shadow-blue-800"
         >
           Book Seats
+        </button>
+      </div>
+      <div>
+        {/* Button to reset all seats */}
+        <button
+          onClick={handleResetSeats} // Triggers the booking function on click
+          className="border-2 bg-red-600 px-5 mt-4 sm:px-8 py-1 rounded-xl transition duration-300 border-red-600 font-semibold text-white shadow-md hover:shadow-lg shadow-red-600 hover:shadow-red-600"
+        >
+          Reset Seats
         </button>
       </div>
     </div>

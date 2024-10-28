@@ -12,11 +12,6 @@ function App() {
   const [bookedSeats, setBookedSeats] = useState([]); // Array of seats that have been successfully booked
   const [loading, setLoading] = useState(false); // Loading state to show spinner when data is being fetched
 
-  // useEffect hook to fetch seat data when the component is first rendered
-  useEffect(() => {
-    fetchSeats(); // Fetch seat data when component mounts
-  }, []);
-
   // Function to fetch seat data from the backend API
   const fetchSeats = async () => {
     setLoading(true); // Set loading to true before starting data fetch
@@ -40,6 +35,22 @@ function App() {
     }
   };
 
+  // Function to handle resetting seats
+  const handleResetSeats = async () => {
+    try {
+      await axios.post(URL + "/reset");
+      fetchSeats();
+      alert("Seats have been reset to available.");
+    } catch (error) {
+      console.error("Failed to reset seats:", error);
+    }
+  };
+
+  // useEffect hook to fetch seat data when the component is first rendered
+  useEffect(() => {
+    fetchSeats(); // Fetch seat data when component mounts
+  }, []);
+  
   // Render loading spinner if seats data is being fetched
   return (
     <div className="min-h-screen flex items-center justify-center px-2 sm:px-10 py-10">
@@ -52,6 +63,7 @@ function App() {
             numberOfSeats={numberOfSeats} // Pass current number of seats to book as a prop
             setNumberOfSeats={setNumberOfSeats} // Pass function to update number of seats as a prop
             handleBooking={handleBooking} // Pass booking function as a prop
+            handleResetSeats={handleResetSeats} // Pass reset function as a prop
           />
           {/* Display success message if seats have been successfully booked */}
           {bookedSeats.length > 0 && (

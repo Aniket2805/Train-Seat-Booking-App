@@ -3,30 +3,10 @@ const Seat = require("../models/Seat"); // Import the Seat model
 // Fetch all seats from the database
 const getSeats = async (req, res) => {
   // Fetch all seats from the database using the Seat model
-  const seats = await Seat.find();
+  const seats = await Seat.find().sort({ seatNumber: 1 });;
 
   // Respond with the fetched seats in JSON format
   res.json(seats);
-};
-
-// Initialize seats (can be run at server start if necessary)
-const initializeSeats = async () => {
-  // Check if seats are already initialized by counting the existing documents
-  const seatCount = await Seat.countDocuments();
-
-  // If there are no seats, initialize 80 seats
-  if (seatCount === 0) {
-    const seats = [];
-
-    // Create 80 seat objects with seat numbers 1 to 80, and set them as not booked
-    for (let i = 1; i <= 80; i++) {
-      seats.push({ seatNumber: i, isBooked: false });
-    }
-
-    // Insert the seats into the database
-    await Seat.insertMany(seats);
-    console.log("Seats initialized");
-  }
 };
 
 // Handle seat booking request
@@ -105,9 +85,20 @@ const bookSeats = async (req, res) => {
   return res.status(200).json({ bookedSeats });
 };
 
+
+// Reset all seats
+const resetSeats = async (req, res) => {
+  try {
+    await Seat.updateMany({}, { isBooked: false });
+    res.status(200).json({ message: "All seats have been reset to available." });
+  } catch (error) {
+    res.status(500).json({ message: "Failed to reset seats.", error });
+  }
+};
+
 // Export the functions to be used in routes or elsewhere
 module.exports = {
   getSeats,
   bookSeats,
-  initializeSeats,
+  resetSeats,
 };
