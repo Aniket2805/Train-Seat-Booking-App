@@ -18,7 +18,11 @@ app.get("/", (req, res) => {
 const corsOptions = {
   origin: process.env.ORIGIN, // Allow only requests from this origin
   methods: "GET,POST", // Allow only these methods
-  allowedHeaders: ["Content-Type", "Authorization"], // Allow only these headers
+  allowedHeaders: [
+    "Content-Type",
+    "Authorization",
+    "Access-Control-Allow-Origin",
+  ], // Allow only these headers
 };
 
 // Middleware
